@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHY 315 Classical Mechanics</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#003366', // Academic Navy Blue
+                            gold: '#F2A900', // Athletic/Academic Gold
+                            dark: '#1a1a1a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        summary {
+            cursor: pointer;
+            display: flex; 
+            justify-content: flex-start; 
+            align-items: center; 
+            list-style-type: none; 
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            padding: 1.5rem; 
+            color: #1f2937; 
+        }
+        
+        summary:hover {
+            background-color: #f9fafb; 
+        }
+        
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        details > summary::before {
+            content: '›'; 
+            margin-right: 0.75rem; 
+            font-size: 1.2em; 
+            transition: transform 0.2s;
+            display: inline-block;
+            font-weight: bold; 
+            color: #003366; /* Brand Blue */
+        }
+        
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        a.slide-link:hover {
+            color: #003366; 
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <div class="relative bg-white rounded-xl shadow-md overflow-hidden mb-6 border-t-4 border-brand-blue">
+            
+            <!-- Decorative Background Engineering Grid -->
+            <div class="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(circle at 2px 2px, #003366 1px, transparent 0); background-size: 24px 24px;"></div>
+            
+            <!-- Decorative Kepler Orbits Graphic -->
+            <div class="absolute right-0 top-0 bottom-0 z-0 pointer-events-none w-2/3 flex justify-end items-center overflow-hidden">
+                <div class="absolute w-[600px] h-[180px] border-[3px] border-brand-blue opacity-10 rounded-[50%] transform rotate-12 translate-x-1/3"></div>
+                <div class="absolute w-[600px] h-[180px] border-[3px] border-brand-gold opacity-[0.12] rounded-[50%] transform -rotate-[35deg] translate-x-1/4"></div>
+                <div class="absolute w-[24px] h-[24px] bg-brand-blue opacity-10 rounded-full transform translate-x-[200px]"></div>
+                <div class="absolute w-[12px] h-[12px] bg-brand-gold opacity-20 rounded-full transform translate-x-[30px] translate-y-[85px]"></div>
+            </div>
+
+            <!-- Content Container -->
+            <div class="p-6 relative z-10">
+                <div class="flex items-center space-x-4 mb-4">
+                    <img class="h-16 w-16 rounded-full object-cover border-2 border-gray-200 shadow-sm bg-white" src="https://placehold.co/150x150/003366/FFFFFF?text=Coe" alt="Coe College Logo">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">PHY 315: Classical Mechanics</h1>
+                        <p class="text-lg text-slate-900">Department of Physics, Coe College | Fall 2026</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 justify-center sm:justify-start">
+                    <a href="#" 
+                       class="inline-block bg-brand-blue text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors shadow-sm flex items-center gap-2">
+                       <i class="fa-solid fa-file-pdf"></i> Download Syllabus
+                    </a>
+                    
+                    <a href="#" 
+                       class="inline-block bg-slate-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-slate-900 transition-colors shadow-sm flex items-center gap-2">
+                       <i class="fa-solid fa-arrow-up-right-from-square text-brand-gold"></i> Moodle Portal
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Left Column: Main Content -->
+            <div class="lg:col-span-2 space-y-6">
+
+                <details class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <summary>Course Description & Rhythm</summary>
+                    <div class="p-6 pt-0 space-y-4 text-gray-700 leading-relaxed border-t border-gray-100 mt-2">
+                        <p>
+                            Classical mechanics is the foundation upon which modern physics is built. In this course, we trace an arc from Newtonian forces to the powerful, coordinate-free geometries of Lagrange and Hamilton.
+                        </p>
+                        <p>
+                            This is not just a math course. We integrate a heavy computational thread (Brunton lab rhythm) to solve problems that analytical techniques cannot touch. We study the universe not just by tracking forces, but by understanding the fundamental principle of stationary action.
+                        </p>
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-brand-gold">
+                            <p class="font-bold text-gray-800 mb-2">The Weekly Rhythm:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-2">
+                                <li><span class="font-semibold text-brand-blue">Mon + Wed:</span> Taylor spine. Derivations, arguments, and physical intuition.</li>
+                                <li><span class="font-semibold text-brand-blue">Fri — The Machine Shop:</span> Brunton's numerical toolkit applied directly to the week's theory.</li>
+                            </ul>
+                        </div>
+                        <div>
+                             <p class="font-bold text-gray-800 mb-2 mt-4">The Rituals:</p>
+                             <ul class="list-disc list-inside space-y-1 ml-2 text-sm">
+                                <li><span class="font-semibold">Predict-then-check:</span> Every demo starts with a class vote. Being wrong together is the engine.</li>
+                                <li><span class="font-semibold">The Logbook:</span> Handwritten, one page per week. Something surprising, a pretty derivation, or a failed attempt.</li>
+                                <li><span class="font-semibold">Fermi Friday:</span> Order-of-magnitude puzzles opening each Machine Shop.</li>
+                             </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-md overflow-hidden" open>
+                    <summary>ACT I: Forces and Frustration (Aug 26 – Sep 25)</summary>
+                    <div class="p-6 pt-0 border-t border-gray-100 mt-2">
+                        <div class="space-y-4 mt-4 text-gray-700">
+                            
+                            <!-- Week 1 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 1 (Aug 26):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>1 (Wed): Course Launch & Newton's Laws
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>2 (Fri): 🔧 Brunton L01 — Colab setup
+                                    </span>
+                                    <span class="text-brand-gold italic">
+                                        <i class="fa-solid fa-star w-6 text-center mr-1"></i>Hook: Monkey and Hunter
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <hr class="border-gray-200">
+
+                            <!-- Week 2 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 2 (Aug 31):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>3 (Mon): Newton's Laws pt 2: Polar Coordinates
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>4 (Wed): Ch 2 — Projectiles & Charged Particles
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>5 (Fri): 🔧 Brunton L02-L03 — Integrating factors
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 3 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 3 (Sep 9):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="text-red-700 font-medium italic">
+                                        <i class="fa-solid fa-calendar-xmark w-6 text-center mr-1"></i>Mon Sep 7: Labor Day (No Class)
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>6 (Wed): Ch 3 — Momentum & Angular Momentum
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>7 (Fri): 🔧 Brunton L05 — State-space form
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 4 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 4 (Sep 14):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>8 (Mon): Ch 4 pt 1 — Energy & Work
+                                    </span>
+                                    <span class="text-brand-gold italic">
+                                        <i class="fa-solid fa-bullseye w-6 text-center mr-1"></i>The Brachistochrone Ramp Introduced
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>9 (Wed): Ch 4 pt 2 — Potentials & Effective 1D
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>10 (Fri): 🔧 Brunton L10 — Potential wells
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 5 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 5 (Sep 21):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>11 (Mon): Ch 5 pt 1 — SHM, Damped Oscillator
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>12 (Wed): Ch 5 pt 2 — Driven, Resonance, Fourier
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>13 (Fri): 🔧 Brunton L04 + L08 — Phase Portraits
+                                    </span>
+                                    <span class="text-red-600 font-bold">
+                                        <i class="fa-solid fa-lock w-6 text-center mr-1"></i>THE CLIFFHANGER
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                
+                <details class="bg-white rounded-xl shadow-md overflow-hidden" open>
+                    <summary>ACT II: Nature Is Lazy (Sep 28 – Nov 13)</summary>
+                    <div class="p-6 pt-0 border-t border-gray-100 mt-2">
+                        <div class="space-y-4 mt-4 text-gray-700">
+
+                            <!-- Week 6 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 6 (Sep 28):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>14 (Mon): Ch 6 pt 1 — Calculus of Variations
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>15 (Wed): Ch 6 pt 2 — Brachistochrone Solved
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>16 (Fri): 🔧 Discretize and Minimize the Action
+                                    </span>
+                                </div>                    
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 7 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 7 (Oct 5):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>17 (Mon): Ch 7 pt 1 — Cliffhanger Resolved
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>18 (Wed): Ch 7 pt 2 — Constraints & 2-link Arm
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>19 (Fri): 🔧 SymPy Lagrangian Pipeline
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 8 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 8 (Oct 12):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-people-group w-6 text-center text-gray-400 mr-1"></i>20 (Mon): Workshop — Midterm Review
+                                    </span>
+                                    <span class="font-bold text-red-700">
+                                        <i class="fa-solid fa-file-pen w-6 text-center mr-1"></i>21 (Wed): MIDTERM EXAM (Sessions 1-19)
+                                    </span>
+                                    <span class="text-gray-500 italic">
+                                        <i class="fa-solid fa-plane-departure w-6 text-center mr-1"></i>Thu-Fri: Fall Break
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 9 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 9 (Oct 19):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>22 (Mon): Ch 7 pt 3 — NOETHER
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>23 (Wed): Ch 7 pt 4 — Lagrange Multipliers
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>24 (Fri): 🔧 Brunton L17 — Integrator Stability
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 10 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 10 (Oct 26):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>25 (Mon): Ch 8 pt 1 — Two-Body Problem
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>26 (Wed): Ch 8 pt 2 — Kepler Orbits
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>27 (Fri): 🔧 RK4 vs Euler · Euler Loses the Earth
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 11 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 11 (Nov 2):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>28 (Mon): Ch 9 — Noninertial Frames
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>29 (Wed): Ch 10 pt 1 — Inertia Tensor & Demo Salvo
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>30 (Fri): 🔧 Diagonalization (Tensor ↔ PCA)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 12 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 12 (Nov 9):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>31 (Mon): Ch 10 pt 2 — Euler's Eqs, Dzhanibekov
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>32 (Wed): Ch 11 — Coupled Oscillators
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>33 (Fri): 🔧 Tumbling T-handle & Normal modes
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-md overflow-hidden" open>
+                    <summary>ACT III: Geometry of Everything (Nov 16 – Dec 11)</summary>
+                    <div class="p-6 pt-0 border-t border-gray-100 mt-2">
+                        <div class="space-y-4 mt-4 text-gray-700">
+
+                            <!-- Week 13 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 13 (Nov 16):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>34 (Mon): Ch 12 pt 1 — Chaos, Logistic Map
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>35 (Wed): 🔧 Lorenz, Bifurcation Sweep
+                                    </span>
+                                    <span class="font-bold text-brand-blue">
+                                        <i class="fa-solid fa-people-group w-6 text-center mr-1"></i>36 (Fri): Capstone Kickoff
+                                    </span>
+                                    <span class="text-gray-500 italic mt-2">
+                                        <i class="fa-solid fa-turkey-roast w-6 text-center mr-1"></i>Thanksgiving Recess (Nov 23 - 27)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-200">
+
+                            <!-- Week 14 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 14 (Nov 30):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>37 (Mon): Ch 13 pt 1 — The Hamiltonian
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>38 (Wed): Ch 13 pt 2 — Phase Space
+                                    </span>
+                                    <span class="font-medium text-brand-blue hover:text-blue-900 transition-colors">
+                                        <i class="fa-solid fa-laptop-code w-6 text-center mr-1"></i>39 (Fri): 🔧 Symplectic Integrators (The Payoff)
+                                    </span>
+                                </div>
+                            </div>
+
+                             <hr class="border-gray-200">
+
+                            <!-- Week 15 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
+                                <span class="font-bold text-gray-800 w-32 flex-shrink-0 pt-0.5">Wk 15 (Dec 7):</span>
+                                <div class="flex flex-col space-y-2">
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-chalkboard-user w-6 text-center text-gray-400 mr-1"></i>40 (Mon): Ch 13 pt 3 — Liouville and Poisson
+                                    </span>
+                                    <span class="font-medium hover:text-brand-blue transition-colors">
+                                        <i class="fa-solid fa-door-open w-6 text-center text-gray-400 mr-1"></i>41 (Wed): THE DOOR (Quantum Mechanics Intro)
+                                    </span>
+                                    <span class="font-bold text-green-700">
+                                        <i class="fa-solid fa-graduation-cap w-6 text-center mr-1"></i>42 (Fri): Capstone Final Presentations
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </details>
+                
+                <details id="grading" class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <summary>Assessment Map</summary>
+                    <div class="p-6 pt-0 space-y-6 border-t border-gray-100 mt-2">
+                        
+                        <div class="mt-4">
+                            <p class="text-gray-700 text-base leading-relaxed">
+                                <span class="font-bold text-brand-blue">30% — Problem Sets (PS1–PS8):</span> Standard analytic homework problems from Taylor.<br><br>
+                                <span class="font-bold text-brand-blue">15% — Machine Shop Labs (14):</span> Due the Monday after each lab session.<br><br>
+                                <span class="font-bold text-brand-blue">10% — The Logbook:</span> Collected Oct 14 & Dec 11. Graded on engagement, not correctness.<br><br>
+                                <span class="font-bold text-brand-blue">15% — Midterm:</span> Oct 14. Covers Sessions 1-19.<br><br>
+                                <span class="font-bold text-brand-blue">15% — Capstone Project:</span> Live presentation + Code/Notebook on Dec 11.<br><br>
+                                <span class="font-bold text-brand-blue">15% — Final Exam:</span> Dec 14-17 (Registrar slot). Cumulative, weighted to Acts II & III.
+                            </p>
+                        </div>
+                        
+                    </div>
+                </details>
+                
+                <details id="instructor" class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <summary>About the Instructor</summary>
+                    <div class="p-6 pt-0 space-y-2">
+                        <h3 class="text-xl font-semibold mb-2">Xiang Li</h3>
+                        <p class="text-gray-700"><strong>Email:</strong> <a href="mailto:xili@coe.edu" class="text-sky-800 hover:underline">xili@coe.edu</a></p>
+                        <p class="text-gray-700"><strong>Office:</strong> Peterson Hall 141 </p>
+                        <p class="text-gray-700"><strong>Office Hours:</strong> Monday and Wednesday 9:30am-12:00pm, Monday and Tuesday 1:00pm-3:00pm</p>
+                    
+                         <p class="text-gray-700 mt-2">
+                          <strong>Schedule a Meeting:</strong> 
+                          <span class="font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded border border-blue-200 ml-2">
+                             <a href="#" target="_blank" class="text-sky-800 hover:underline">Book a Time Slot</a>
+                          </span>
+                        </p>
+                    </div>
+                </details>
+
+                 <details class="bg-white rounded-xl shadow-md overflow-hidden" open>
+                    <summary>Class Details</summary>
+                    <div class="p-6 pt-0 space-y-4 border-t border-gray-100 mt-2">
+                         <div class="mt-4">
+                             <p class="text-gray-700 font-bold mb-2">Meeting Time:</p>
+                             <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                 <li><span class="font-medium bg-gray-100 px-2 rounded">MWF:</span> 2:00 PM - 2:50 PM</li>
+                             </ul>
+                         </div>
+                    </div>
+                </details>
+
+            </div>      
+
+            <div class="lg:col-span-1 space-y-6">
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden sticky top-6">
+                    <div class="bg-[#1a1a1a] p-4">
+                        <h3 class="text-white font-bold text-lg"><i class="fa-solid fa-link mr-2"></i>Resources & Textbooks</h3>
+                    </div>
+                    <div class="p-6">
+                        
+                        <div class="mb-6">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 pl-1">Primary Texts</h4>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="#" class="flex items-center group text-gray-700 hover:text-black">
+                                        <i class="fa-solid fa-book text-xl w-6 text-center text-gray-400 group-hover:text-black transition-colors"></i>
+                                        <span class="ml-2 font-medium text-sm">Taylor, Classical Mechanics</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center group text-gray-700 hover:text-brand-blue">
+                                        <i class="fa-solid fa-laptop-code text-xl w-6 text-center text-gray-400 group-hover:text-brand-blue transition-colors"></i>
+                                        <span class="ml-2 font-medium text-sm">Brunton, Data-Driven Science</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="border-t border-gray-100 my-4"></div>
+
+                        <div>
+                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 pl-1">Computational Tools</h4>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="#" class="flex items-center group text-gray-700 hover:text-orange-600">
+                                        <i class="fa-brands fa-python text-xl w-6 text-center text-gray-400 group-hover:text-orange-600 transition-colors"></i>
+                                        <span class="ml-2 font-medium text-sm">Google Colab (Lab Env)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center group text-gray-700 hover:text-brand-blue">
+                                        <i class="fa-solid fa-calculator text-xl w-6 text-center text-gray-400 group-hover:text-brand-blue transition-colors"></i>
+                                        <span class="ml-2 font-medium text-sm">SymPy Documentation</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center group text-gray-700 hover:text-brand-blue">
+                                        <i class="fa-solid fa-chart-line text-xl w-6 text-center text-gray-400 group-hover:text-brand-blue transition-colors"></i>
+                                        <span class="ml-2 font-medium text-sm">SciPy Documentation</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    
+    </main>
+
+    <footer class="text-center text-gray-400 py-8 text-sm">
+        <p>&copy; 2026 Coe College. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
