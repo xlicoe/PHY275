@@ -1,2 +1,2 @@
 # PHY315
-Classical Mechanics
+Repo for PHY275 Classical Mechanics
